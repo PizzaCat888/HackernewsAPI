@@ -51,5 +51,54 @@
     }
     .button-active {
     border-radius: 0;
-    border-bottom: 1px solid #38BB6C;
+    border-bottom: 1px solid rgb(216, 21, 14);
     }
+
+    h1 { 
+    color: #111; 
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 50px;
+    font-weight: 700; 
+    line-height: 64px; 
+    margin: 0 0 0; 
+    padding: 20px 30px; 
+    text-align: center; 
+    text-transform: uppercase;
+ }
+
+ .glowing-border {
+    border: 2px solid #dadada;
+    border-radius: 7px;
+}
+
+.glowing-border:focus { 
+    outline: none;
+    border-color: #9ecaed;
+    box-shadow: 0 0 10px #9ecaed;
+}
+
+
+.button-inline:hover {
+    /* background-color: rgb(36, 142, 228); */
+    /* color: rgb(175, 17, 17); */
+    color: rgb(252, 6, 6);  
+    /* border: 2px solid */
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}

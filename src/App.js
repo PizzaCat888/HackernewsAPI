@@ -3,8 +3,9 @@ import './App.css';
 import { sortBy } from 'lodash';
 import './index.css';
 import classNames from 'classnames';
+import ReactTooltip from 'react-tooltip'
 
-const DEFAULT_QUERY = 'redux';
+const DEFAULT_QUERY = 'react';
 const DEFAULT_PAGE = 0;
 const DEFAULT_HPP = '100'; //fetches more data
 
@@ -111,6 +112,7 @@ constructor(props) {
     return (
     <div className="page">
       <div className="interactions">
+        <h1>Hacker News Search Engine</h1>
     <Search value={query} onChange={this.onSearchChange} onSubmit={this.onSearchSubmit}>
     Search
     </Search>
@@ -133,7 +135,7 @@ constructor(props) {
       //functional stateless component
       const Search = ({ value, onChange, onSubmit, children }) =>
       <form onSubmit={onSubmit}>
-      <input type="text" value={value} onChange={onChange} />
+      <input className="glowing-border" type="text" value={value} onChange={onChange} placeholder="eg.react"/>
       <button type="submit">{children}</button>
         </form>
         
@@ -162,25 +164,27 @@ const Table = ({ list, sortKey, isSortReverse, onSort }) => {
   const reverseSortedList = isSortReverse ? sortedList.reverse() : sortedList;
   return(
 <div className="table">
+{/* Tooltip component from react-tooltip */}
+<ReactTooltip/> 
   <div className="table-header">
     <span style={{ width: '40%' }}>
     <Sort sortKey={'TITLE'} onSort={onSort} activeSortKey={sortKey}>
-    Title
+    <span data-tip="Sort by Title">Title</span>
     </Sort>
     </span>
     <span style={{ width: '30%' }}>
     <Sort sortKey={'AUTHOR'} onSort={onSort} activeSortKey={sortKey}>
-    Author
+    <span data-tip="Sort by Author">Author</span>
     </Sort>
     </span>
     <span style={{ width: '15%' }}>
     <Sort sortKey={'COMMENTS'} onSort={onSort}  activeSortKey={sortKey}>
-    Comments
+    <span data-tip="Sort by Comments">Comments</span>
     </Sort>
     </span>
     <span style={{ width: '15%' }}>
     <Sort sortKey={'POINTS'} onSort={onSort}  activeSortKey={sortKey}>
-    Points
+    <span data-tip="Sort by Points">Points</span>
     </Sort>
   </span>
 </div>
@@ -220,11 +224,12 @@ const ButtonWithLoading = withLoading(Button);
 const Sort = ({ sortKey, activeSortKey, onSort, children }) => {
   const sortClass = classNames('button-inline', { 'button-active': sortKey === activeSortKey }); //show button-active class if sortkey is equal to activesortkey using classnames libary
   return (
-  <button onClick={() => onSort(sortKey)} className={sortClass} type="button">
+  <button onClick={() => onSort(sortKey)} className={sortClass} type="button"> 
   {children}
   </button>
   );
   }
+
     
   
 
